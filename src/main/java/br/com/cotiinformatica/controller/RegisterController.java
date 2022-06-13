@@ -50,7 +50,10 @@ public class RegisterController {
 			}
 			
 			//criando um objeto da classe de entidade Usuario
-			Usuario usuario = new Usuario(null, nome, email, senha);
+			Usuario usuario = new Usuario();
+			usuario.setNome(nome);
+			usuario.setEmail(email);
+			usuario.setSenha(senha);
 			
 			//gravar o usuário no banco de dados			
 			usuarioRepository.inserir(usuario);
