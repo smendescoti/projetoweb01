@@ -133,5 +133,49 @@ public class CompromissoRepository {
 		connection.close();
 		return lista;
 	}
+	
+	public Compromisso obterPorId(Integer idCompromisso, Integer idUsuario) throws Exception{
+		
+		//abrindo conexão com o banco de dados
+		Connection connection = ConnectionFactory.getConnection();
+		
+		PreparedStatement statement = connection.prepareStatement
+				("select * from compromisso where idcompromisso = ? and idusuario = ?");
+		
+		statement.setInt(1, idCompromisso);
+		statement.setInt(2, idUsuario);
+		ResultSet resultSet = statement.executeQuery();
+		
+		Compromisso compromisso = null;
+		
+		if(resultSet.next()) {
+			
+			compromisso = new Compromisso();
+			
+			compromisso.setIdCompromisso(resultSet.getInt("idcompromisso"));
+			compromisso.setNome(resultSet.getString("nome"));
+			compromisso.setData(new SimpleDateFormat("yyyy-MM-dd").parse(resultSet.getString("data")));
+			compromisso.setHora(resultSet.getString("hora"));
+			compromisso.setDescricao(resultSet.getString("descricao"));
+			compromisso.setPrioridade(resultSet.getInt("prioridade"));
+		}
+		
+		connection.close(); //fechando a conexão
+		return compromisso;
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

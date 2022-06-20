@@ -70,7 +70,52 @@ public class CompromissoConsultaController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/excluir-compromisso")
+	public ModelAndView excluirCompromisso(Integer id, HttpServletRequest request) {
+		
+		// WEB-INF/views/agenda/consulta.jsp
+		ModelAndView modelAndView = new ModelAndView("agenda/consulta");
+		
+		try {
+			
+			Usuario usuario = (Usuario) request.getSession().getAttribute("usuario_autenticado");
+			
+			Compromisso compromisso = new Compromisso();
+			compromisso.setIdCompromisso(id);
+			compromisso.setUsuario(usuario);
+			
+			//excluindo o compromisso
+			CompromissoRepository compromissoRepository = new CompromissoRepository();
+			compromissoRepository.excluir(compromisso);
+			
+			modelAndView.addObject("mensagem_sucesso", "Compromisso excluído com sucesso.");
+			
+			List<Compromisso> lista = compromissoRepository.obterTodos(usuario.getIdUsuario());			
+			modelAndView.addObject("compromissos", lista);			
+		}
+		catch(Exception e) {
+			modelAndView.addObject("mensagem_erro", e.getMessage());
+		}
+		
+		return modelAndView;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

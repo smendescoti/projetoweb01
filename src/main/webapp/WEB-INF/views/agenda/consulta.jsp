@@ -44,8 +44,12 @@
 			</div>		
 		</form>
 		
-		<div class="text-danger">
+		<div class="text-danger mt-2">
 			<strong>${mensagem_erro}</strong>
+		</div>
+		
+		<div class="text-success mt-2">
+			<strong>${mensagem_sucesso}</strong>
 		</div>
 		
 		<table class="table table-hover table-sm mt-4">
@@ -81,10 +85,13 @@
 							</c:if>
 						</td>
 						<td>
-							<a href="#" class="btn btn-primary btn-sm">
+							<a href="/projetoweb01/editar-compromissos?id=${item.idCompromisso}" 
+								class="btn btn-primary btn-sm">
 								Editar
 							</a>
-							<a href="#" class="btn btn-danger btn-sm">
+							<a href="/projetoweb01/excluir-compromisso?id=${item.idCompromisso}" 
+								onclick="return confirm('Deseja realmente excluir o compromisso?\n${item.nome}');"
+								class="btn btn-danger btn-sm">
 								Excluir
 							</a>
 						</td>
