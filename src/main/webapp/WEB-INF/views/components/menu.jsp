@@ -17,7 +17,10 @@
             <li><a class="dropdown-item" href="/projetoweb01/cadastrar-compromissos">Cadastrar Compromissos</a></li>
             <li><a class="dropdown-item" href="/projetoweb01/consultar-compromissos">Consultar Compromissos</a></li>
           </ul>
-        </li>      
+        </li>   
+        <li class="nav-item">
+          <a class="nav-link" href="/projetoweb01/configuracoes-usuario">Configurações do Usuário</a>
+        </li>   
       </ul>
       
       <form class="d-flex">

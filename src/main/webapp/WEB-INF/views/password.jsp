@@ -19,12 +19,12 @@
 		<h5>Recuperação de Senha</h5>
 		<p>Informe seu email para recuperar a senha de acesso.</p>
 	
-		<form>
+		<form method="post" action="recuperar-senha">
 		
 			<div class="mb-3">
 				<label>Email:</label> 
-				<input type="text" class="form-control"
-					placeholder="Digite o email aqui" />
+				<input type="email" class="form-control" name="email"
+					placeholder="Digite o email aqui" required="required" />
 			</div>
 
 			<div class="mb-2 d-grid">
@@ -38,6 +38,14 @@
 			</div>
 			
 		</form>
+		
+		<div class="mt-2 text-success">
+			<strong>${mensagem_sucesso}</strong>
+		</div>
+		
+		<div class="mt-2 text-danger">
+			<strong>${mensagem_erro}</strong>
+		</div>
 
 	</div>
 
